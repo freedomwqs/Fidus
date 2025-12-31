@@ -1,0 +1,39 @@
+name: Sync to Public Mirror
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Private Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Push to Public Mirror
+        env:
+          # ⚠️ 必须在 Private 仓库的 Settings -> Secrets and variables -> Actions 中配置此 Secret
+          # 内容为你具有 Public 仓库写权限的 Personal Access Token (Classic)
+          API_TOKEN_GITHUB: ${{ secrets.PUBLIC_REPO_PAT }}
+          
+          # ⚠️ 请修改为你的 Public 仓库地址 (去掉 https:// 前缀)
+          # 例如: github.com/your-username/Fidus-Public.git
+          PUBLIC_REPO_URL: "github.com/YOUR_USERNAME/Fidus-Public.git"
+          
+          # ⚠️ Public 仓库的分支名称
+          TARGET_BRANCH: "main"
+        run: |
+          echo "Setting up git configuration..."
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          
+          echo "Adding public remote..."
+          git remote add public "https://x-access-token:$API_TOKEN_GITHUB@$PUBLIC_REPO_URL"
+          
+          echo "Pushing to public mirror..."
+          # 使用 -f 强制推送，确保 Public 始终是 Private 的精确镜像
+          git push -f public main:$TARGET_BRANCH

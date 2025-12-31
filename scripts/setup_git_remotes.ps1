@@ -1,0 +1,56 @@
+# Fidus GitHub Setup Script
+
+Write-Host "=========================================="
+Write-Host "   Fidus GitHub Initialization Assistant"
+Write-Host "=========================================="
+Write-Host ""
+
+# 1. Check Git Config
+$gitEmail = git config --global user.email
+if (-not $gitEmail) {
+    $email = Read-Host "Please enter your Git Email (e.g., you@example.com)"
+    git config --global user.email $email
+}
+
+$gitName = git config --global user.name
+if (-not $gitName) {
+    $name = Read-Host "Please enter your Git Name (e.g., Your Name)"
+    git config --global user.name $name
+}
+
+# 2. Get GitHub Username
+$username = Read-Host "Please enter your GitHub Username"
+if (-not $username) {
+    Write-Error "Username is required."
+    exit
+}
+
+# 3. Configure Remote
+$privateRepoUrl = "https://github.com/$username/Fidus-Private.git"
+Write-Host "Configuring remote 'origin' to: $privateRepoUrl"
+
+# Remove existing origin if any
+git remote remove origin 2>$null
+
+git remote add origin $privateRepoUrl
+
+# 4. Commit and Push
+Write-Host "Staging and Committing files..."
+git add .
+git commit -m "Initial commit: Fidus project structure, docs, and sync workflow"
+
+Write-Host ""
+Write-Host "⚠️  IMPORTANT: Before pushing, ensure you have:"
+Write-Host "1. Created 'Fidus-Private' and 'Fidus-Public' repos on GitHub."
+Write-Host "2. Updated '.github/workflows/mirror.yml' with your username."
+Write-Host "3. Added 'PUBLIC_REPO_PAT' secret to 'Fidus-Private' settings."
+Write-Host ""
+
+$confirm = Read-Host "Ready to push to Fidus-Private? (Y/N)"
+if ($confirm -eq 'Y' -or $confirm -eq 'y') {
+    git branch -M main
+    git push -u origin main
+    Write-Host "🚀 Pushed to Private Repo! Check the Actions tab in GitHub for sync status."
+} else {
+    Write-Host "Push aborted. You can push manually later using 'git push -u origin main'."
+}

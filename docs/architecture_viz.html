@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidus Architecture Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .diagram-box {
+            margin-bottom: 40px;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fidus: Personal Data & Private Agent</h1>
+        <p>Visualization of the Core Architecture and Data Flow.</p>
+
+        <h2>1. AI Ecological Panoramic Structure (5 Layers)</h2>
+        <div class="diagram-box">
+            <div class="mermaid">
+graph TD
+    %% Define Styles
+    classDef governance fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef knowledge fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    classDef connectivity fill:#fff3e0,stroke:#ef6c00,stroke-width:2px;
+    classDef execution fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    classDef economy fill:#ffebee,stroke:#c62828,stroke-width:2px;
+    classDef external fill:#eceff1,stroke:#455a64,stroke-width:1px,stroke-dasharray: 5 5;
+
+    subgraph L1 ["1. Governance & Decision Layer"]
+        LLM[LLM (Brain)]
+        Agent[Agent (Manager)]
+        LangSmith[LangSmith (Evaluator)]
+    end
+    class LLM,Agent,LangSmith governance
+
+    subgraph L2 ["2. Knowledge & Memory Layer"]
+        ShortMem[Short-term Memory]
+        LongMem[Long-term Memory / Private KB]
+    end
+    class ShortMem,LongMem knowledge
+
+    subgraph L3 ["3. Connectivity & Protocol Layer"]
+        MCP[MCP Protocol (Universal Socket)]
+        Connectors[Connectors / Links]
+    end
+    class MCP,Connectors connectivity
+
+    subgraph L4 ["4. Execution & Skills Layer"]
+        Tools[Tools (Atomic)]
+        Skills[Skills (Composite)]
+        Sandbox[Cloud Browser / Sandbox]
+    end
+    class Tools,Skills,Sandbox execution
+
+    subgraph L5 ["5. Economy & Settlement Layer"]
+        x402[x402 Protocol (Payment)]
+    end
+    class x402 economy
+
+    %% Flows
+    Agent -- "Reasons with" --> LLM
+    LangSmith -. "Audits" .-> Agent
+    
+    Agent -- "Reads/Writes" --> ShortMem
+    Agent -- "Retrieves/Stores" --> LongMem
+    
+    Agent -- "Controls" --> Connectors
+    Connectors -- "Adheres to" --> MCP
+    
+    Agent -- "Invokes" --> Skills
+    Skills -- "Composes" --> Tools
+    Tools -- "Runs in" --> Sandbox
+    
+    Agent -- "Pays via" --> x402
+    
+    %% External
+    ExternalApps[External Apps / Data Sources]
+    ExternalServices[Paid Services / APIs]
+    class ExternalApps,ExternalServices external
+
+    Connectors <--> ExternalApps
+    x402 <--> ExternalServices
+            </div>
+        </div>
+
+        <h2>2. Data Strategy & Core Flow</h2>
+        <div class="diagram-box">
+            <div class="mermaid">
+graph LR
+    %% Data Sources
+    subgraph Sources ["Data Sources (Multi-source Integration)"]
+        direction TB
+        S1[Profile/Physique]
+        S2[Voice/Dialogue]
+        S3[Browser History]
+        S4[App Usage]
+        S5[Social Graph]
+        S6[On-Chain Behavior]
+        S7[Reading Notes]
+        S8[All-Terminal Trace]
+    end
+
+    %% Core System
+    subgraph Core ["Fidus Core Base"]
+        direction TB
+        KB[("Private Knowledge Base\n(Structured/Vectorized/Owned)")]
+        PA[("Private Agent\n(Intent/Execution)")]
+    end
+
+    %% Uses
+    subgraph Uses ["Data Uses (Value)"]
+        direction TB
+        U1[Intent Recognition]
+        U2[Gap Reminder]
+        U3[Report Extraction]
+        U4[Social Sharing]
+        U5[Relationship Valuation]
+        U6[Encrypted Sharing]
+        U7[Agent Composition]
+    end
+
+    %% Flow
+    Sources -- "Ingest & Structure" --> KB
+    KB <--> PA
+    PA -- "Delivers" --> Uses
+
+    style Sources fill:#f5f5f5,stroke:#333,stroke-width:1px
+    style Core fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    style Uses fill:#fff8e1,stroke:#ffc107,stroke-width:1px
+            </div>
+        </div>
+    </div>
+</body>
+</html>
