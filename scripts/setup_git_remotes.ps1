@@ -19,14 +19,11 @@ if (-not $gitName) {
 }
 
 # 2. Get GitHub Username
-$username = Read-Host "Please enter your GitHub Username"
-if (-not $username) {
-    Write-Error "Username is required."
-    exit
-}
+$username = "freedomwqs"
+Write-Host "Using GitHub Username: $username"
 
 # 3. Configure Remote
-$privateRepoUrl = "https://github.com/$username/Fidus-Private.git"
+$privateRepoUrl = "https://github.com/$username/PDPA.git"
 Write-Host "Configuring remote 'origin' to: $privateRepoUrl"
 
 # Remove existing origin if any
@@ -37,20 +34,21 @@ git remote add origin $privateRepoUrl
 # 4. Commit and Push
 Write-Host "Staging and Committing files..."
 git add .
-git commit -m "Initial commit: Fidus project structure, docs, and sync workflow"
+git commit -m "Initial commit: Fidus project structure, docs, and sync workflow" 2>$null
+# Ignore commit error if nothing to commit
 
 Write-Host ""
 Write-Host "⚠️  IMPORTANT: Before pushing, ensure you have:"
-Write-Host "1. Created 'Fidus-Private' and 'Fidus-Public' repos on GitHub."
-Write-Host "2. Updated '.github/workflows/mirror.yml' with your username."
-Write-Host "3. Added 'PUBLIC_REPO_PAT' secret to 'Fidus-Private' settings."
+Write-Host "1. Created 'PDPA' (Private) and 'Fidus' (Public) repos on GitHub."
+Write-Host "2. Updated '.github/workflows/mirror.yml' with 'freedomwqs/Fidus.git'."
+Write-Host "3. Added 'PUBLIC_REPO_PAT' secret to 'PDPA' settings."
 Write-Host ""
 
-$confirm = Read-Host "Ready to push to Fidus-Private? (Y/N)"
+$confirm = Read-Host "Ready to push to PDPA? (Y/N)"
 if ($confirm -eq 'Y' -or $confirm -eq 'y') {
     git branch -M main
     git push -u origin main
-    Write-Host "🚀 Pushed to Private Repo! Check the Actions tab in GitHub for sync status."
+    Write-Host "🚀 Pushed to Private Repo (PDPA)! Check the Actions tab in GitHub for sync status to Public Repo (Fidus)."
 } else {
     Write-Host "Push aborted. You can push manually later using 'git push -u origin main'."
 }

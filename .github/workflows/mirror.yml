@@ -22,7 +22,7 @@ jobs:
           
           # ⚠️ 请修改为你的 Public 仓库地址 (去掉 https:// 前缀)
           # 例如: github.com/your-username/Fidus-Public.git
-          PUBLIC_REPO_URL: "github.com/YOUR_USERNAME/Fidus-Public.git"
+          PUBLIC_REPO_URL: "github.com/freedomwqs/Fidus.git"
           
           # ⚠️ Public 仓库的分支名称
           TARGET_BRANCH: "main"
