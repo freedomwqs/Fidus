@@ -44,11 +44,8 @@ Write-Host "2. Updated '.github/workflows/mirror.yml' with 'freedomwqs/Fidus.git
 Write-Host "3. Added 'PUBLIC_REPO_PAT' secret to 'PDPA' settings."
 Write-Host ""
 
-$confirm = Read-Host "Ready to push to PDPA? (Y/N)"
-if ($confirm -eq 'Y' -or $confirm -eq 'y') {
-    git branch -M main
-    git push -u origin main
-    Write-Host "🚀 Pushed to Private Repo (PDPA)! Check the Actions tab in GitHub for sync status to Public Repo (Fidus)."
-} else {
-    Write-Host "Push aborted. You can push manually later using 'git push -u origin main'."
-}
+Write-Host "🚀 Pushing to Private Repo (PDPA)..."
+git branch -M main
+git push -u origin main
+Write-Host "✅ Done! Check the Actions tab in GitHub for sync status to Public Repo (Fidus)."
+
