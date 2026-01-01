@@ -1,29 +1,28 @@
-# Fidus: Personal Data & Private Agent
+# Fidus: Data Truly Yours, Agent Deeply Loyal. (数据私有，立场唯你)
 
-**产品定位**: Personal Data & Private Agent (你的数据和你的代理)
+> **A Web3-native Manus: Personal data is the deepest context that understands you.**
 
-> **"铁打的数据基座，可插拔的 Agent"**
->
-> **"Fidus: Data Truly Yours, Agent Deeply Loyal. (数据私有，立场唯你)"**
+Agents, LLMs, skills, tools, and links — every intelligence and executor — are replaceable, pluggable, composable, and evolvable, all orchestrated around you and your context.
 
-Fidus 是一个致力于让每个人都成为 **AI-driven SuperMan** 的系统。它基于 **私有知识库 + 私人 Agent** 的核心基座，坚信 **Personal Data 是 Context 的最小上界和最适配闭包**。
+**核心理念**:
+*   **Context 才是基座和重心**：Personal Data 是当下的你的 Context 的最小闭包，能产生最 match 的智能！
+*   **组件可插拔**：Agents, LLMs, skills, tools, and links 等一切智能体和执行器，都是可替代的、可插拔的、可通用、可组合的、可进化的、可分享的。
+*   **以你为中心**：
+    *   不应以 LLM 为中心 (如 ChatGPT)
+    *   也不应以平台为中心 (如 Manus)
+    *   **智能革命 + 超级个体：一切以 Context 为中心！**
+    *   Context 是你的，才会以你为中心；Context 不是你的，不可能以你为中心。
 
-在此架构下：
-*   **LLM、Agent、Skills、Tools、Links、Utils 都是可替代、可迁移、可插拔、可调用、可组合、可协作、可进化的**。
-*   **Common Data Slots/MCP 是通用的数据插槽：多源数据的整合，结构化入槽；多源数据的调用，结构化出槽；多源数据的存储，结构化仓库。
-*   **Personal Data 是一切的底盘**：多源聚合、持续积累、私有存储、可产权化。
-*   **Personal Agent 是开放的生态**：基于通用的数据接口，每个人都可以开发个性化 Agent 自用或分享。
+---
 
-Personal Data是Context的终极形态；通过这种“量体裁衣”的 Context 输出的智能，Fidus 为用户提供最有质量、最贴心的用户侧智能。
-
-## 核心职能
-Fidus 赋予用户四大核心职能：
+## 核心职能 (Core Functions)
+Fidus 赋予用户四大核心职能，让你成为 **AI-driven SuperMan**：
 1.  **贴身秘书**: 处理日常事务，提供意图识别与细节填充。
 2.  **忠实库管**: 管理个人知识资产，实现横向打通与纵向积累。
 3.  **智能代理**: 代表用户进行价值对接与供需撮合。
 4.  **极致效率**: 提升工作与生活的决策效率。
 
-## 项目文档导航 (工作底稿)
+## 项目文档导航 (Project Docs)
 本项目已建立初步的工作底稿与素材库，详情请参阅 `docs` 目录：
 
 *   [**0. 项目工作底稿 (原典)**](docs/0_project_origin_log.md): 记录 Project Owner 的所有原始构想与核心指令 (Source of Truth)。
