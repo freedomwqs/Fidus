@@ -35,5 +35,5 @@ jobs:
           git remote add public "https://x-access-token:$API_TOKEN_GITHUB@$PUBLIC_REPO_URL"
           
           echo "Pushing to public mirror..."
-          # 使用 -f 强制推送，确保 Public 始终是 Private 的精确镜像
-          git push -f public main:$TARGET_BRANCH
+          # 尝试普通推送 (如果历史兼容)，失败则尝试强制推送
+          git push public main:$TARGET_BRANCH || git push -f public main:$TARGET_BRANCH
